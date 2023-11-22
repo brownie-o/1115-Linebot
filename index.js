@@ -40,6 +40,26 @@ bot.on('message', event => {
       anime(event)
     } else if (event.message.text === '匯率') {
       event.reply(usdtwd.exrate.toString())
+    } else if (event.message.text === '123'){
+      event.reply({
+        type: 'text',
+        text: '123',
+        quickReply: {
+          items: [
+            {
+              type: 'action',
+              action: {
+                // 使用者點了之後會傳送訊息
+                type: 'message',
+                // 傳送的文字
+                text: 'message text',
+                // 按鈕的文字
+                label: 'message'
+              }
+            }
+          ]
+        }
+      })
     }
   }
 })
