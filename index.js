@@ -36,11 +36,11 @@ bot.on('message', event => {
     } else if (event.message.text === '後端') {
       be(event)
       // .startsWith('') 訊息是以''開頭
-    } else if (event.message.text.startsWith('動畫')) {
+    } else if (event.message.text.startsWith('!動畫')) {
       anime(event)
     } else if (event.message.text === '匯率') {
       event.reply(usdtwd.exrate.toString())
-    } else if (event.message.text === '123'){
+    } else if (event.message.text === '123') {
       event.reply({
         type: 'text',
         text: '123',
@@ -52,9 +52,49 @@ bot.on('message', event => {
                 // 使用者點了之後會傳送訊息
                 type: 'message',
                 // 傳送的文字
-                text: 'message text',
+                text: '傳送的文字',
                 // 按鈕的文字
                 label: 'message'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'camera',
+                label: '相機'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'cameraRoll',
+                label: '相簿'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'location',
+                label: '位置'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'uri',
+                uri: 'https://wdaweb.github.io',
+                label: '網址'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'postback',
+                label: 'postback',
+                // 傳送的文字
+                // text: 'postback 文字',
+                // postback事件後收到的文字
+                data: '111222333'
               }
             }
           ]
@@ -62,6 +102,11 @@ bot.on('message', event => {
       })
     }
   }
+})
+
+// 可以處理postback收到的資料
+bot.on('postback', event => {
+  console.log(event.postback.data)
 })
 
 // '/' -> 路徑
