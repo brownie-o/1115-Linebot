@@ -32,6 +32,9 @@ export default async (event) => {
 
     if (process.env.DEBUG === 'true') {
       fs.writeFileSync('./dump/anime.json', JSON.stringify(template, null, 2))
+      // template: 要被轉換成JSON字串的對象，the object you want to stringify
+      // replacer(null): 要替代的文字，若是null則不需替代
+      // 2: 用兩個空格進行縮進，使 JSON 字符串更易讀
     }
 
     // fs=檔案系統
